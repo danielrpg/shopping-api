@@ -1,0 +1,16 @@
+spring:
+  application:
+    name: shopping-api
+
+# Database
+  r2dbc:
+    url: r2dbc:postgresql://192.168.4.6:5432/shopping_db?currentSchema=shopping
+    username: postgres
+    password: admin01
+    pool:
+      initial-size: 5
+      max-size: 10
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui.html

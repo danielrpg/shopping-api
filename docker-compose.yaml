@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+  postgres:
+    restart: always
+    container_name: shopping-db
+    image: 'postgres:16.0'
+    environment:
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'admin01'
+      PGDATA: '/data/postgres'
+    volumes:
+      - './compose/postgres:/data'
+    ports:
+      - '5432:5432'
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "5050:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: daniel.fernandezgp@gmail.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+volumes:
+  local_pgdata:
+  pgadmin-data:
